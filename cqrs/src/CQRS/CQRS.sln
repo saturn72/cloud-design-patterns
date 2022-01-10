@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPI", "CommandAPI\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryAPI", "QueryAPI\QueryAPI.csproj", "{3FBD01EF-40ED-428F-9A0B-639BAE3A17FA}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{AF0F6E3F-E659-4DA1-B61B-ADEAABF26FD6}"
+	ProjectSection(SolutionItems) = preProject
+		nginx\identity.conf = nginx\identity.conf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +34,10 @@ Global
 		{3FBD01EF-40ED-428F-9A0B-639BAE3A17FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FBD01EF-40ED-428F-9A0B-639BAE3A17FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FBD01EF-40ED-428F-9A0B-639BAE3A17FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

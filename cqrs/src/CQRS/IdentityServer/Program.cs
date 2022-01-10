@@ -1,17 +1,28 @@
+using IdentityServer;
+using Microsoft.AspNetCore.HttpOverrides;
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
+var seqUrl = builder.Configuration["seq:url"] ?? throw new ArgumentNullException("seqUrl");
 
-// Add services to the container.
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console()
+    .WriteTo.Seq(seqUrl));
 
-builder.Services.AddControllers();
+builder.Services
+    .AddIdentityServer()
+    .AddInMemoryApiScopes(Config.ApiScopes)
+    .AddInMemoryClients(Config.Clients);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
+var fho = new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+};
+fho.KnownNetworks.Clear();
+fho.KnownProxies.Clear();
+app.UseForwardedHeaders(fho);
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
+app.UseIdentityServer();
 app.Run();
