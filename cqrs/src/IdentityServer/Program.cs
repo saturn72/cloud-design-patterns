@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 var seqUrl = builder.Configuration["seq:url"] ?? throw new ArgumentNullException("seqUrl");
 
 builder.Host.UseSerilog((ctx, lc) => lc
-    .WriteTo.Console()
+    .ReadFrom.Configuration(ctx.Configuration)
+    .Enrich.FromLogContext()
     .WriteTo.Seq(seqUrl));
 
 builder.Services

@@ -12,22 +12,23 @@ namespace IdentityServer
         public static IEnumerable<Client> Clients =>
         new List<Client>
         {
-        new Client
-        {
-            ClientId = "client",
-
-            // no interactive user, use the clientid/secret for authentication
-            AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-            // secret for authentication
-            ClientSecrets =
+            new Client
             {
-                new Secret("secret".Sha256())
-            },
-
-            // scopes that client has access to
-            AllowedScopes = { "api1" }
-        }
+                ClientId = "command-api-swagger",
+                ClientName = "cqrs command api for swagger",
+                RequireConsent = false,
+                RequireClientSecret = false,
+                RequirePkce = true,
+                RedirectUris = new[] { "https://command.saturn72.com:443/oauth2-redirect.html" },
+                AllowedCorsOrigins = new[] { "https://command.saturn72.com:443" },
+                AllowedGrantTypes = GrantTypes.Code,
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                },
+                PostLogoutRedirectUris = new[] { "https://notused"},
+                AllowedScopes = { "openid","profile", "api" }
+            }
         };
     }
 }
