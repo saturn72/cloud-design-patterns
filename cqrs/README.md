@@ -1,11 +1,6 @@
 # CQRS
 `CQRS` design pattern separates domain's entity update and read operations.
 By providing separate logic for each operation cross-domain-optimization is achieved.
-
-The implementaion provided is described in the following images:
-![CQRS Command Flow](../images/cqrs/command_flow.jpg)
-![CQRS Query Flow](../images/cqrs/query_flow.jpg)
-
 ## Implemented Domain and story
 The example is for an online marketplace product management and implementats 3 services:
 * `IdentityServer` - Utilizes ![IdentityServer4](https://github.com/IdentityServer/IdentityServer4) for identity management
@@ -20,3 +15,7 @@ Whenevent product is created/updated all attribute and data related to these asp
 
 ### 2. `QueryAPI` - Marketplace's Product Search Service
 This service recieves product search query from a marketplace app and returns the matching results
+
+## Implemented Flows
+![CQRS Command Flow](../images/cqrs/command_flow.jpg)
+![CQRS Query Flow](../images/cqrs/query_flow.jpg)
