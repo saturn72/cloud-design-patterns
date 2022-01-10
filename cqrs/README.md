@@ -3,8 +3,8 @@
 By providing separate endpoints and logic for each you may optimize the usage of your service.
 
 The implementaion created here is described in the following images:
-![CQRS Command Flow](images/cqrs/command_flow.jpg)
-![CQRS Query Flow](images/cqrs/query_flow.jpg)
+![CQRS Command Flow](./images/cqrs/command_flow.jpg)
+![CQRS Query Flow](./images/cqrs/query_flow.jpg)
 
 
 
