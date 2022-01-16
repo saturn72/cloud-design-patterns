@@ -5,7 +5,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["IdentityServer/IdentityServer.csproj", "IdentityServer/"]
+COPY ["IdentityServer/IdentityServer.csproj", "IdentityServer/IdentityServer/"]
 RUN dotnet restore "IdentityServer/IdentityServer.csproj"
 COPY . .
 WORKDIR "/src/IdentityServer"

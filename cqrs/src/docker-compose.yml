@@ -1,14 +1,14 @@
 version: '3.7'
 
 services:
-  reverseproxy:
-    build:
-      context: .
-      dockerfile: nginx/nginx.Dockerfile
-    depends_on:
-      - identityserver
+  reverse-proxy:
+    image: traefik:v2.6
+    command: --api.insecure=true --providers.docker
     ports:
-      - "44395:443"
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   seq:
     image: datalust/seq
@@ -17,6 +17,8 @@ services:
       - "5341:80"
     environment:
       - ACCEPT_EULA=Y
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest 
 
   identityserver:
     image: ${DOCKER_REGISTRY-}identityserver
@@ -27,14 +29,32 @@ services:
       - ASPNETCORE_URLS=http://*:5000
     ports:
       - "5000:5000"
+    depends_on:
+      - sqldata
+    labels:
+      - "traefik.http.routers.identity.rule=Host(`identity.docker.localhost`)"
 
-  #commandapi:
-  #  build:
-  #    context: .
-  #    dockerfile: CommandAPI/Dockerfile
-  #  environment:
-  #    - ASPNETCORE_URLS=http://*:5006
-  #  ports:
-  #    - "5006:5006"
-  #  networks:
-  #    - cqrsnet
+  commandapi:
+    image: ${DOCKER_REGISTRY-}commandapi
+    build:
+      context: .
+      dockerfile: CommandAPI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5010
+    ports:
+      - "5010:5010"
+    labels:
+      - "traefik.http.routers.command.rule=Host(`command.docker.localhost`)"
+
+  queryapi:
+    image: ${DOCKER_REGISTRY-}queryapi
+    build:
+      context: .
+      dockerfile: QueryAPI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5020
+    ports:
+      - "5020:5020"
+    labels:
+      - "traefik.http.routers.query.rule=Host(`query.docker.localhost`)"
+

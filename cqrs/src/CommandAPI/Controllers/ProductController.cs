@@ -11,6 +11,9 @@ namespace CommandAPI.Controllers
     [Route("product")]
     public class ProductController : ControllerBase
     {
+            [HttpGet]
+            public IActionResult Get() => Ok("from command");
+
         private static readonly string INSERT_SQL = $"INSERT INTO {nameof(ManagedProduct)}s Values " +
             $"(@{nameof(ManagedProduct.Gtin)}," +
             $"@{nameof(ManagedProduct.InventoryQuantity)}," +

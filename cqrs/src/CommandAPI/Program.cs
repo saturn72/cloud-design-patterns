@@ -18,21 +18,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //configure rabbitMQ
-//var rmqOptions = new RabbitMqConfigurar().Configure(builder.Services, builder.Configuration);
+var rmqOptions = new RabbitMqConfigurar().Configure(builder.Services, builder.Configuration);
 
-////configure OpenTelemetry (using jaeger)
-//builder.Services.AddOpenTelemetryTracing((builder) =>
-//{
-//    builder.AddAspNetCoreInstrumentation()
-//        .AddHttpClientInstrumentation()
-//        .AddSqlClientInstrumentation();
+//configure OpenTelemetry (using jaeger)
+builder.Services.AddOpenTelemetryTracing((builder) =>
+{
+    builder.AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation()
+        .AddSqlClientInstrumentation();
 
-//    if (!rmqOptions.AppName.IsNullOrEmpty())
-//        builder.AddSource(rmqOptions.AppName);
+    if (!rmqOptions.AppName.IsNullOrEmpty())
+        builder.AddSource(rmqOptions.AppName);
 
-//    //to configure see here: https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Jaeger/README.md#environment-variables
-//    builder.AddJaegerExporter();
-//});
+    //to configure see here: https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Jaeger/README.md#environment-variables
+    builder.AddJaegerExporter();
+});
 
 var app = builder.Build();
 var fho = new ForwardedHeadersOptions
