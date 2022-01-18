@@ -3,6 +3,13 @@
 By providing separate logic for each operation cross-domain-optimization is achieved.
 It is related to [Data Flow Management](../README.md#cqrs) and sets different behaviors for querying data records and creating and updating these records.
 
+Each executable can leverage 3 channels to acomplish its logic:
+1. command - changes the state of memory object
+2. query - provide info about memory object
+3. notify - declare an event that occured
+
+`CQRS` defines a general usage of these 3 channels
+
 ## When (partial)
 * High performant services for query and/or command
 * [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html) exists between the update and read models
@@ -26,3 +33,4 @@ This service recieves product search query from a marketplace app and returns th
 ## Implemented Flows
 ![CQRS Command Flow](../images/cqrs/command_flow.jpg)
 ![CQRS Query Flow](../images/cqrs/query_flow.jpg)
+![CQRS Services Relation](../images/cqrs/services_relation.jpg)
