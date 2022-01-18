@@ -11,21 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryAPI", "QueryAPI\QueryA
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{09A19F6A-BC5E-45EE-AD14-37AA07C59A2A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{AF0F6E3F-E659-4DA1-B61B-ADEAABF26FD6}"
-	ProjectSection(SolutionItems) = preProject
-		nginx\command.conf = nginx\command.conf
-		nginx\command.crt = nginx\command.crt
-		nginx\command.key = nginx\command.key
-		nginx\command.pfx = nginx\command.pfx
-		nginx\identity.conf = nginx\identity.conf
-		nginx\identity.crt = nginx\identity.crt
-		nginx\identity.csr = nginx\identity.csr
-		nginx\identity.key = nginx\identity.key
-		nginx\identity.pfx = nginx\identity.pfx
-		nginx\nginx.Dockerfile = nginx\nginx.Dockerfile
-		nginx\nginx.local.conf = nginx\nginx.local.conf
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
