@@ -10,7 +10,7 @@ It is related to [Data Flow Management](../README.md#cqrs) and sets different be
 
 ## Implemented Domain and story
 The example is for an online marketplace product management and implementats 3 services:
-* `IdentityServer` - Utilizes ![IdentityServer4](https://github.com/IdentityServer/IdentityServer4) for identity management
+* `IdentityServer` - Utilizes [IdentityServer4](https://github.com/IdentityServer/IdentityServer4) for identity management
 * `CommandAPI` - Command endpoint(s)
 * `QueryAPI` - Query endpoint(s)
 
