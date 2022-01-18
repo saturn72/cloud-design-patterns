@@ -5,7 +5,7 @@ It is related to [Data Flow Management](../README.md#cqrs) and sets different be
 
 ## When (partial)
 * High performant services for query and/or command
-* [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html) exists between the write and read models
+* [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html) exists between the update and read models
 * Different security models for command and query services
 
 ## Implemented Domain and story
