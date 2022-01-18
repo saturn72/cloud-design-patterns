@@ -1,6 +1,13 @@
 # CQRS
 `CQRS` design pattern separates domain's entity update and read operations.
 By providing separate logic for each operation cross-domain-optimization is achieved.
+It is related to [Data Flow Management](Data Flow Management) and sets different behaviors for querying data records and creating and updating these records.
+
+## When (partial)
+* High performant services for query and/or command
+* [Bounded Context](https://martinfowler.com/bliki/BoundedContext.html) exists between the write and read models
+* Different security models for command and query services
+
 ## Implemented Domain and story
 The example is for an online marketplace product management and implementats 3 services:
 * `IdentityServer` - Utilizes ![IdentityServer4](https://github.com/IdentityServer/IdentityServer4) for identity management
