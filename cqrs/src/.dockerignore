@@ -1,5 +1,7 @@
 **/bin/
 **/obj/
+**/out/
+
 **/.classpath
 **/.dockerignore
 **/.env
@@ -23,5 +25,6 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+**/*.md
 LICENSE
 README.md

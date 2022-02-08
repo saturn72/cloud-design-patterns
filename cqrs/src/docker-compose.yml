@@ -2,19 +2,29 @@ version: '3.7'
 
 services:
   rabbitmq:
-    image: rabbitmq:management-alpine
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    labels:
+      - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.docker.localhost`)"
 
   reverse-proxy:
     image: traefik:v2.6
+    container_name: 'traefik'
     command: --api.insecure=true --providers.docker
     ports:
-      - "80:80"
-      - "8080:8080"
+      - "81:80"
+      - "8081:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.http.routers.traefik.rule=Host(`traefik.docker.localhost`)"
 
   seq:
     image: datalust/seq
+    container_name: 'seq'
     restart: unless-stopped
     ports:
       - "5341:80"
@@ -22,6 +32,8 @@ services:
       - ACCEPT_EULA=Y
   sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest 
+    labels:
+      - "traefik.http.routers.seq.rule=Host(`seq.docker.localhost`)"
 
   identityserver:
     image: ${DOCKER_REGISTRY-}identityserver
@@ -49,7 +61,7 @@ services:
     labels:
       - "traefik.http.routers.command.rule=Host(`command.docker.localhost`)"
     depends_on:
-      - rabbitmq
+      #- rabbitmq
       - identityserver
 
   queryapi:
@@ -65,6 +77,6 @@ services:
       - "traefik.http.routers.query.rule=Host(`query.docker.localhost`)"
     depends_on:
       - commandapi
-      - rabbitmq
+      #- rabbitmq
       - identityserver
 
