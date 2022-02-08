@@ -18,11 +18,17 @@ Upon request for stored data `cache-aside` perffroms the following steps:
 * Data-value size can be accommodated within cache 
 
 ## CRUD - Managing entry lifecycle using cache-aside
-When an item is to set into or get from cache, a unique identifier must be generated (cache-key)
-* Creation - clear cache
-* Read data - set expiration
-* Update - evict from cache
-* Delete - evict from cache
+When an item is to set into or get from cache, a unique identifier must be generated (cache-key).
+While reading data behavior acts as describe above, create/update/delete actions have different behavior.
+The general flow for Create/Update/Delete should be:
+1. Modify store
+2. Raise event for create/update/delete
+3. Return the fetched value as request's result
+
+An event handler should handle cache management with the commone behavior of:
+* `OnCreate` - Remove all same entry type from cache - to cause cache update for `get-all` action
+* `OnUpdate` - Remove all same entry type from cache - to cause cache update for `get-all` and `get-single-entry-by` actions
+* `OnDelete` - Remove all same entry type from cache - to cause cache update for `get-all` actions and eliminate the result for `get-single-entry-by` action
 
 ## How to Manage Cache for Multiple Application Instances
 Central cache that updates local cache
