@@ -1,7 +1,7 @@
 # CQRS
 `CQRS` design pattern separates domain's entity update and read operations.
 By providing separate logic for each operation cross-domain-optimization is achieved.
-It is related to [Data Flow Management](../README.md#cqrs) and sets different behaviors for querying data records and creating and updating these records.
+It is related to [Data Flow Management](../README.md#data-flow-management) and sets different behaviors for querying data records and creating and updating these records.
 
 Each executable can leverage 3 channels to acomplish its logic:
 1. command - changes the state of memory object
