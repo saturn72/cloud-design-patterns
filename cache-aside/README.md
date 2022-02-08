@@ -1,6 +1,6 @@
 # Cache-Aside
 `Cache-Aside` design pattern improve performance and usibility for reading data from a store by placing the fetched data into in-memory-store (cache) for re-use.
-It is related to [Data Flow Management](../README.md#cqrs).
+It is related to [Data Flow Management](../README.md#data-flow-management).
 
 Upon request for stored data `cache-aside` perffroms the following steps:
 1. Is the fetched data exists in cache?
