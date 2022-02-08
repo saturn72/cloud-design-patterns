@@ -10,7 +10,7 @@ Upon request for stored data `cache-aside` perffroms the following steps:
 5. Place the fetches value into cache
 6. Return the fetched value as request's result
 
-![Cache-Aside Command Flow](../images/cache-aside/general_flow.jpg)
+![Cache-Aside Flow](../images/cache-aside/general_flow.jpg)
 
 ## When (partial)
 * Same data-value is required
@@ -29,6 +29,7 @@ An event handler should handle cache management with the commone behavior of:
 * `OnCreate` - Remove all same entry type from cache - to cause cache update for `get-all` action
 * `OnUpdate` - Remove all same entry type from cache - to cause cache update for `get-all` and `get-single-entry-by` actions
 * `OnDelete` - Remove all same entry type from cache - to cause cache update for `get-all` actions and eliminate the result for `get-single-entry-by` action
+![Cache-Aside Create/Update/Delete Flows](../images/cache-aside/create_update_delete.jpg)
 
 ## How to Manage Cache for Multiple Application Instances
 Central cache that updates local cache
