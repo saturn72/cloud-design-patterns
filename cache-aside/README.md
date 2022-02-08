@@ -33,7 +33,3 @@ An event handler should handle cache management with the commone behavior of:
 
 ## How to Manage Cache for Multiple Application Instances
 Central cache that updates local cache
-
-## Implemented Flows
-![Cache-Aside Query Flow](../images/cache-aside/query_flow.jpg)
-![Cache-Aside Services Relation](../images/cache-aside/services_relation.jpg)
