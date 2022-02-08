@@ -1,5 +1,5 @@
-# CQRS
-`CQRS` design pattern separates domain's entity update and read operations.
+# Cache-Aside
+`Cache-Aside` design pattern separates domain's entity update and read operations.
 By providing separate logic for each operation cross-domain-optimization is achieved.
 It is related to [Data Flow Management](../README.md#cqrs) and sets different behaviors for querying data records and creating and updating these records.
 
@@ -8,7 +8,7 @@ Each executable can leverage 3 channels to acomplish its logic:
 2. query - provide info about memory object
 3. notify - declare an event that occured
 
-`CQRS` defines a general usage of these 3 channels
+`Cache-Aside` defines a general usage of these 3 channels
 
 ## When (partial)
 * High performant services for query and/or command
@@ -31,6 +31,6 @@ Whenevent product is created/updated all attribute and data related to these asp
 This service recieves product search query from a marketplace app and returns the matching results
 
 ## Implemented Flows
-![CQRS Command Flow](../images/cqrs/command_flow.jpg)
-![CQRS Query Flow](../images/cqrs/query_flow.jpg)
-![CQRS Services Relation](../images/cqrs/services_relation.jpg)
+![Cache-Aside Command Flow](../images/cache-aside/command_flow.jpg)
+![Cache-Aside Query Flow](../images/cache-aside/query_flow.jpg)
+![Cache-Aside Services Relation](../images/cache-aside/services_relation.jpg)
