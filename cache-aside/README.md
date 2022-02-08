@@ -10,12 +10,15 @@ Upon request for stored data `cache-aside` perffroms the following steps:
 5. Place the fetches value into cache
 6. Return the fetched value as request's result
 
+![Cache-Aside Command Flow](../images/cache-aside/general_flow.jpg)
+
 ## When (partial)
 * Same data-value is required
 * Fetching data is "expensive" operation
 * Data-value size can be accommodated within cache 
 
-## Managing data-entry lifetime with cache
+## CRUD - Managing entry lifecycle using cache-aside
+When an item is to set into or get from cache, a unique identifier must be generated (cache-key)
 * Creation - clear cache
 * Read data - set expiration
 * Update - evict from cache
@@ -25,6 +28,5 @@ Upon request for stored data `cache-aside` perffroms the following steps:
 Central cache that updates local cache
 
 ## Implemented Flows
-![Cache-Aside Command Flow](../images/cache-aside/command_flow.jpg)
 ![Cache-Aside Query Flow](../images/cache-aside/query_flow.jpg)
 ![Cache-Aside Services Relation](../images/cache-aside/services_relation.jpg)
